@@ -1,0 +1,14 @@
+PODS:
+  - NTChartView (0.0.1)
+
+DEPENDENCIES:
+  - NTChartView (from `..`)
+
+EXTERNAL SOURCES:
+  NTChartView:
+    :path: ..
+
+SPEC CHECKSUMS:
+  NTChartView: 200d186ce8eff779db9778bf10205c1bad3c146d
+
+COCOAPODS: 0.22.3

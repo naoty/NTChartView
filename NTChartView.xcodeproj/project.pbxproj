@@ -1,0 +1,250 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		3D5399E717A823D600FDDAAE /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D5399E617A823D600FDDAAE /* Foundation.framework */; };
+		3D5399EC17A823D600FDDAAE /* NTChartView.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3D5399EB17A823D600FDDAAE /* NTChartView.h */; };
+		3D5399EE17A823D600FDDAAE /* NTChartView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D5399ED17A823D600FDDAAE /* NTChartView.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		3D5399E117A823D500FDDAAE /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "include/${PRODUCT_NAME}";
+			dstSubfolderSpec = 16;
+			files = (
+				3D5399EC17A823D600FDDAAE /* NTChartView.h in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		3D5399E317A823D500FDDAAE /* libNTChartView.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libNTChartView.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		3D5399E617A823D600FDDAAE /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		3D5399EA17A823D600FDDAAE /* NTChartView-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NTChartView-Prefix.pch"; sourceTree = "<group>"; };
+		3D5399EB17A823D600FDDAAE /* NTChartView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NTChartView.h; sourceTree = "<group>"; };
+		3D5399ED17A823D600FDDAAE /* NTChartView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NTChartView.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		3D5399E017A823D500FDDAAE /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3D5399E717A823D600FDDAAE /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		3D5399DA17A823D500FDDAAE = {
+			isa = PBXGroup;
+			children = (
+				3D5399E817A823D600FDDAAE /* NTChartView */,
+				3D5399E517A823D500FDDAAE /* Frameworks */,
+				3D5399E417A823D500FDDAAE /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		3D5399E417A823D500FDDAAE /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				3D5399E317A823D500FDDAAE /* libNTChartView.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		3D5399E517A823D500FDDAAE /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				3D5399E617A823D600FDDAAE /* Foundation.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		3D5399E817A823D600FDDAAE /* NTChartView */ = {
+			isa = PBXGroup;
+			children = (
+				3D5399EB17A823D600FDDAAE /* NTChartView.h */,
+				3D5399ED17A823D600FDDAAE /* NTChartView.m */,
+				3D5399E917A823D600FDDAAE /* Supporting Files */,
+			);
+			path = NTChartView;
+			sourceTree = "<group>";
+		};
+		3D5399E917A823D600FDDAAE /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				3D5399EA17A823D600FDDAAE /* NTChartView-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		3D5399E217A823D500FDDAAE /* NTChartView */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 3D5399F117A823D600FDDAAE /* Build configuration list for PBXNativeTarget "NTChartView" */;
+			buildPhases = (
+				3D5399DF17A823D500FDDAAE /* Sources */,
+				3D5399E017A823D500FDDAAE /* Frameworks */,
+				3D5399E117A823D500FDDAAE /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = NTChartView;
+			productName = NTChartView;
+			productReference = 3D5399E317A823D500FDDAAE /* libNTChartView.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		3D5399DB17A823D500FDDAAE /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0460;
+				ORGANIZATIONNAME = "Naoto Kaneko";
+			};
+			buildConfigurationList = 3D5399DE17A823D500FDDAAE /* Build configuration list for PBXProject "NTChartView" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 3D5399DA17A823D500FDDAAE;
+			productRefGroup = 3D5399E417A823D500FDDAAE /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				3D5399E217A823D500FDDAAE /* NTChartView */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		3D5399DF17A823D500FDDAAE /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3D5399EE17A823D600FDDAAE /* NTChartView.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		3D5399EF17A823D600FDDAAE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		3D5399F017A823D600FDDAAE /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		3D5399F217A823D600FDDAAE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DSTROOT = /tmp/NTChartView.dst;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "NTChartView/NTChartView-Prefix.pch";
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		3D5399F317A823D600FDDAAE /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DSTROOT = /tmp/NTChartView.dst;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "NTChartView/NTChartView-Prefix.pch";
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		3D5399DE17A823D500FDDAAE /* Build configuration list for PBXProject "NTChartView" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3D5399EF17A823D600FDDAAE /* Debug */,
+				3D5399F017A823D600FDDAAE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		3D5399F117A823D600FDDAAE /* Build configuration list for PBXNativeTarget "NTChartView" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3D5399F217A823D600FDDAAE /* Debug */,
+				3D5399F317A823D600FDDAAE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 3D5399DB17A823D500FDDAAE /* Project object */;
+}
