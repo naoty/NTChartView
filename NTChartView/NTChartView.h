@@ -7,7 +7,8 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
 
-@interface NTChartView : NSObject
+@interface NTChartView : UIView
 
 @end

@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "NTLineChartView.h"
 
-@interface ViewController : UIViewController
+@interface ViewController : UIViewController <NTLineChartViewDataSource>
 
 @end

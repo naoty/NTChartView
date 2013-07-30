@@ -14,7 +14,7 @@ NTChartView is an easily charting library for iOS.
 ```objc
 - (void)viewDidLoad
 {
-    NTLineChartView *lineChartView = [[NTLineChartView alloc] init];
+    NTLineChartView *lineChartView = [[NTLineChartView alloc] initWithFrame:self.view.bounds];
     lineChartView.dataSource = self;
     [self.view addSubview:lineChartView];
 }

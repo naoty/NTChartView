@@ -10,6 +10,8 @@
 		3D5399E717A823D600FDDAAE /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D5399E617A823D600FDDAAE /* Foundation.framework */; };
 		3D5399EC17A823D600FDDAAE /* NTChartView.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3D5399EB17A823D600FDDAAE /* NTChartView.h */; };
 		3D5399EE17A823D600FDDAAE /* NTChartView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D5399ED17A823D600FDDAAE /* NTChartView.m */; };
+		3D539A3417A82C6C00FDDAAE /* NTLineChartView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D539A3317A82C6C00FDDAAE /* NTLineChartView.m */; };
+		3D837DBF17AA0ADE002D01F4 /* NTLineChartArea.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D837DBE17AA0ADE002D01F4 /* NTLineChartArea.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -28,9 +30,12 @@
 /* Begin PBXFileReference section */
 		3D5399E317A823D500FDDAAE /* libNTChartView.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libNTChartView.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		3D5399E617A823D600FDDAAE /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
-		3D5399EA17A823D600FDDAAE /* NTChartView-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NTChartView-Prefix.pch"; sourceTree = "<group>"; };
 		3D5399EB17A823D600FDDAAE /* NTChartView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NTChartView.h; sourceTree = "<group>"; };
 		3D5399ED17A823D600FDDAAE /* NTChartView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NTChartView.m; sourceTree = "<group>"; };
+		3D539A3217A82C6C00FDDAAE /* NTLineChartView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NTLineChartView.h; sourceTree = "<group>"; };
+		3D539A3317A82C6C00FDDAAE /* NTLineChartView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NTLineChartView.m; sourceTree = "<group>"; };
+		3D837DBD17AA0ADE002D01F4 /* NTLineChartArea.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NTLineChartArea.h; sourceTree = "<group>"; };
+		3D837DBE17AA0ADE002D01F4 /* NTLineChartArea.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NTLineChartArea.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -75,17 +80,12 @@
 			children = (
 				3D5399EB17A823D600FDDAAE /* NTChartView.h */,
 				3D5399ED17A823D600FDDAAE /* NTChartView.m */,
-				3D5399E917A823D600FDDAAE /* Supporting Files */,
+				3D539A3217A82C6C00FDDAAE /* NTLineChartView.h */,
+				3D539A3317A82C6C00FDDAAE /* NTLineChartView.m */,
+				3D837DBD17AA0ADE002D01F4 /* NTLineChartArea.h */,
+				3D837DBE17AA0ADE002D01F4 /* NTLineChartArea.m */,
 			);
 			path = NTChartView;
-			sourceTree = "<group>";
-		};
-		3D5399E917A823D600FDDAAE /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				3D5399EA17A823D600FDDAAE /* NTChartView-Prefix.pch */,
-			);
-			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -140,6 +140,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				3D5399EE17A823D600FDDAAE /* NTChartView.m in Sources */,
+				3D539A3417A82C6C00FDDAAE /* NTLineChartView.m in Sources */,
+				3D837DBF17AA0ADE002D01F4 /* NTLineChartArea.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -203,8 +205,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				DSTROOT = /tmp/NTChartView.dst;
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "NTChartView/NTChartView-Prefix.pch";
+				GCC_PRECOMPILE_PREFIX_HEADER = NO;
+				GCC_PREFIX_HEADER = "";
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -215,8 +217,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				DSTROOT = /tmp/NTChartView.dst;
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "NTChartView/NTChartView-Prefix.pch";
+				GCC_PRECOMPILE_PREFIX_HEADER = NO;
+				GCC_PREFIX_HEADER = "";
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
