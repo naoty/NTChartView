@@ -32,15 +32,40 @@
 
 - (NSInteger)numberOfLinesInLineChartView:(NTLineChartView *)lineChartView
 {
-    return 2;
+    return 8;
 }
 
 - (NSArray *)lineChartView:(NTLineChartView *)lineChartView dataForLineAtIndex:(NSInteger)index
 {
-    if (index == 0) {
-        return @[@[@1, @20], @[@2, @10], @[@3, @50], @[@4, @80]];
-    } else {
-        return @[@[@1, @50], @[@2, @60], @[@3, @30], @[@4, @40]];
+    switch (index) {
+        case 0:
+            return @[@[@0, @0], @[@1, @1], @[@2, @2]];
+            break;
+        case 1:
+            return @[@[@0, @0], @[@1, @2], @[@2, @4]];
+            break;
+        case 2:
+            return @[@[@0, @0], @[@1, @3], @[@2, @6]];
+            break;
+        case 3:
+            return @[@[@0, @0], @[@1, @4], @[@2, @8]];
+            break;
+        case 4:
+            return @[@[@0, @0], @[@1, @5], @[@2, @10]];
+            break;
+        case 5:
+            return @[@[@0, @0], @[@1, @6], @[@2, @12]];
+            break;
+        case 6:
+            return @[@[@0, @0], @[@1, @7], @[@2, @14]];
+            break;
+        case 7:
+            return @[@[@0, @0], @[@1, @8], @[@2, @16]];
+            break;
+            
+        default:
+            return @[];
+            break;
     }
 }
 

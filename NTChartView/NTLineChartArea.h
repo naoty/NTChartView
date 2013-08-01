@@ -8,9 +8,12 @@
 
 #import "NTLineChartView.h"
 
+@class NTPoint;
+
 @interface NTLineChartArea : NTLineChartView
-{
-    CGPoint _originPoint;
-}
+
+- (id)initWithFrame:(CGRect)rect numberOfLines:(NSInteger)number;
+- (void)addPoint:(NTPoint *)point atLineIndex:(NSInteger)index;
+- (void)drawLineAtIndex:(NSInteger)index;
 
 @end
