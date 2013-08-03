@@ -54,18 +54,39 @@
 - (void)drawRect:(CGRect)rect
 {
     self.originPoint = CGPointMake(0, CGRectGetMaxY(rect));
-    [self drawAxis];
+    [self drawAxes];
+    [self drawRules];
 }
 
-- (void)drawAxis
+- (void)drawAxes
 {
     CGPoint xAxisEdgePoint = CGPointMake(CGRectGetWidth(self.frame), CGRectGetHeight(self.frame));
     CGPoint yAxisEdgePoint = CGPointMake(0, 0);
     
     UIColor *color = [UIColor blackColor];
     
-    [self drawLineFrom:self.originPoint to:xAxisEdgePoint width:1.0f color:color.CGColor];
-    [self drawLineFrom:self.originPoint to:yAxisEdgePoint width:1.0f color:color.CGColor];
+    [self drawLineFrom:self.originPoint to:xAxisEdgePoint width:2.0f color:color.CGColor];
+    [self drawLineFrom:self.originPoint to:yAxisEdgePoint width:2.0f color:color.CGColor];
+}
+
+- (void)drawRules
+{
+    UIColor *color = [UIColor colorWithHexString:@"#CCCCCC"];
+    
+    CGFloat width = CGRectGetWidth(self.frame);
+    CGFloat height = CGRectGetHeight(self.frame);
+    
+    for (int i = 0; i < 4; i++) {
+        CGPoint startPoint = CGPointMake(0, height * i / 4);
+        CGPoint endPoint = CGPointMake(width, height * i / 4);
+        [self drawLineFrom:startPoint to:endPoint width:1.0f color:color.CGColor];
+    }
+    
+    for (int i = 1; i <= 4; i++) {
+        CGPoint startPoint = CGPointMake(width * i / 4, height);
+        CGPoint endPoint = CGPointMake(width * i / 4, 0);
+        [self drawLineFrom:startPoint to:endPoint width:1.0f color:color.CGColor];
+    }
 }
 
 - (void)addPoint:(NTPoint *)point atLineIndex:(NSInteger)index
