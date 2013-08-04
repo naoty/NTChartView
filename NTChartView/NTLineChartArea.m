@@ -107,8 +107,8 @@
     NSMutableArray *pointsForLine = self.points[index];
     for (NTPoint *point in pointsForLine) {
         // convert data into coordinate
-        [point setXByWidth:CGRectGetWidth(self.frame) max:self.maxXValue min:self.minXValue];
-        [point setYByHeight:CGRectGetHeight(self.frame) max:self.maxYValue min:self.minYValue];
+        [point setXByWidth:CGRectGetWidth(self.frame) margin:CGRectGetMinX(self.frame) max:self.maxXValue min:self.minXValue];
+        [point setYByHeight:CGRectGetHeight(self.frame) margin:CGRectGetMinY(self.frame) max:self.maxYValue min:self.minYValue];
         
         NSInteger pointIndex = [pointsForLine indexOfObject:point];
         if (pointIndex > 0) {

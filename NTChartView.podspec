@@ -7,5 +7,6 @@ Pod::Spec.new do |s|
   s.author       = { "Naoto Kaneko" => "naoty.k@gmail.com" }
   s.source       = { git: "http://github.com/naoty/NTChartView.git", tag: "v#{s.version}" }
   s.source_files = "NTChartView/**/*.{h,m}"
+  s.framework    = "QuartzCore"
   s.requires_arc = true
 end

@@ -25,14 +25,14 @@
     return CGPointMake(self.x, self.y);
 }
 
-- (void)setXByWidth:(CGFloat)width max:(float)max min:(float)min
+- (void)setXByWidth:(CGFloat)width margin:(float)margin max:(float)max min:(float)min
 {
-    _x = [self map:self.xValue fromMax:max fromMin:min toMax:width + 30.0f toMin:30.0f];
+    _x = [self map:self.xValue fromMax:max fromMin:min toMax:width + margin toMin:margin];
 }
 
-- (void)setYByHeight:(CGFloat)height max:(float)max min:(float)min
+- (void)setYByHeight:(CGFloat)height margin:(float)margin max:(float)max min:(float)min
 {
-    _y = [self map:self.yValue fromMax:max fromMin:min toMax:30.0f toMin:height + 30.0f];
+    _y = [self map:self.yValue fromMax:max fromMin:min toMax:margin toMin:height + margin];
 }
 
 - (CGFloat)map:(CGFloat)value fromMax:(CGFloat)fromMax fromMin:(CGFloat)fromMin toMax:(CGFloat)toMax toMin:(CGFloat)toMin
