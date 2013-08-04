@@ -18,7 +18,7 @@
 @property (nonatomic, readonly) CGPoint CGPoint;
 
 - (id)initWithXValue:(float)xValue yValue:(float)yValue;
-- (void)setXByWidth:(CGFloat)width margin:(float)margin max:(float)max min:(float)min;
-- (void)setYByHeight:(CGFloat)height margin:(float)margin max:(float)max min:(float)min;
+- (void)setXByWidth:(CGFloat)width max:(float)max min:(float)min;
+- (void)setYByHeight:(CGFloat)height max:(float)max min:(float)min;
 
 @end

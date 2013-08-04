@@ -15,11 +15,6 @@
 
 @property (nonatomic) NTLineChartArea *lineChartArea;
 
-@property (nonatomic) float minXValue;
-@property (nonatomic) float maxXValue;
-@property (nonatomic) float minYValue;
-@property (nonatomic) float maxYValue;
-
 @end
 
 @implementation NTLineChartView
@@ -45,36 +40,32 @@ const CGFloat kLabelHeight = 15.0;
 
 - (void)drawRect:(CGRect)rect
 {
-    CGRect lineChartAreaRect = CGRectMake(kPaddingLeft, kPaddingTop, CGRectGetWidth(self.frame) - kPaddingLeft - kPaddingRight, CGRectGetHeight(self.frame) - kPaddingTop - kPaddingBottom);
-    NSInteger numberOfLines = [self.dataSource numberOfLinesInLineChartView:self];
-    self.lineChartArea = [[NTLineChartArea alloc] initWithFrame:lineChartAreaRect numberOfLines:numberOfLines];
+    CGFloat areaWidth = CGRectGetWidth(self.frame) - kPaddingLeft - kPaddingRight;
+    CGFloat areaHeight = CGRectGetHeight(self.frame) - kPaddingTop - kPaddingBottom;
+    self.lineChartArea = [[NTLineChartArea alloc] initWithFrame:CGRectMake(kPaddingLeft, kPaddingTop, areaWidth, areaHeight)];
+    [self addSubview:self.lineChartArea];
     
-    NSInteger index;
-    for (index = 0; index < numberOfLines; index++) {
-        NSArray *data = [self.dataSource lineChartView:self dataForLineAtIndex:index];
+    NSInteger lineIndex;
+    NSInteger numberOfLines = [self.dataSource numberOfLinesInLineChartView:self];
+    for (lineIndex = 0; lineIndex < numberOfLines; lineIndex++) {
+        self.lineChartArea.points[lineIndex] = [@[] mutableCopy];
+        NSArray *data = [self.dataSource lineChartView:self dataForLineAtIndex:lineIndex];
         for (NSArray *values in data) {
             float xValue = [values[0] floatValue];
             float yValue = [values[1] floatValue];
             
+            // these values are used to determine coordinates of points.
             self.maxXValue = MAX(xValue, self.maxXValue);
             self.minXValue = MIN(xValue, self.minXValue);
             self.maxYValue = MAX(yValue, self.maxYValue);
             self.minYValue = MIN(yValue, self.minYValue);
             
             NTPoint *point = [[NTPoint alloc] initWithXValue:xValue yValue:yValue];
-            [self.lineChartArea addPoint:point atLineIndex:index];
+            [self.lineChartArea.points[lineIndex] addObject:point];
         }
     }
     
-    // Draw lines after all points are added, because coordinates of points are determined by
-    // the largest and smallest x/y value of all points.
-    for (index = 0; index < numberOfLines; index++) {
-        [self.lineChartArea drawLineAtIndex:index];
-    }
-    
     [self addLabels];
-    
-    [self addSubview:self.lineChartArea];
 }
 
 - (void)addLabels
@@ -104,21 +95,6 @@ const CGFloat kLabelHeight = 15.0;
         labelLayer.frame = CGRectMake(CGRectGetWidth(self.lineChartArea.frame) * x / 4 + kPaddingLeft - kPaddingLeft / 2, CGRectGetHeight(self.frame) - kPaddingBottom + 5, kPaddingLeft, kLabelHeight);
         [self.layer addSublayer:labelLayer];
     }
-}
-
-- (void)drawLineFrom:(CGPoint)startPoint to:(CGPoint)endPoint width:(CGFloat)width color:(CGColorRef)color
-{
-    CGContextRef context = UIGraphicsGetCurrentContext();
-    CGContextSaveGState(context);
-    
-    CGContextSetLineWidth(context, width);
-    CGContextSetLineCap(context, kCGLineCapSquare);
-    CGContextSetStrokeColorWithColor(context, color);
-    CGContextMoveToPoint(context, startPoint.x, startPoint.y);
-    CGContextAddLineToPoint(context, endPoint.x, endPoint.y);
-    CGContextStrokePath(context);
-    
-    CGContextRestoreGState(context);
 }
 
 @end

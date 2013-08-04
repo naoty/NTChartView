@@ -13,8 +13,10 @@
 @interface NTLineChartView : NTChartView
 
 @property (nonatomic, weak) id <NTLineChartViewDataSource> dataSource;
-
-- (void)drawLineFrom:(CGPoint)startPoint to:(CGPoint)endPoint width:(CGFloat)width color:(CGColorRef)color;
+@property (nonatomic) float minXValue;
+@property (nonatomic) float maxXValue;
+@property (nonatomic) float minYValue;
+@property (nonatomic) float maxYValue;
 
 @end
 

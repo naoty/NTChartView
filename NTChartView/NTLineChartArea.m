@@ -7,37 +7,23 @@
 //
 
 #import "NTLineChartArea.h"
+#import "NTLineChartView.h"
 #import "NTPoint.h"
 #import "UIColor+Hex.h"
 
 @interface NTLineChartArea ()
 
-@property (nonatomic) CGPoint originPoint;
-@property (nonatomic) NSMutableArray *points;
-@property (nonatomic) float minXValue;
-@property (nonatomic) float maxXValue;
-@property (nonatomic) float minYValue;
-@property (nonatomic) float maxYValue;
 @property (nonatomic) NSArray *colors;
 
 @end
 
 @implementation NTLineChartArea
 
-- (id)initWithFrame:(CGRect)frame numberOfLines:(NSInteger)number
+- (id)initWithFrame:(CGRect)frame
 {
     self = [super initWithFrame:frame];
     if (self) {
         self.points = [@[] mutableCopy];
-        for (int i = 0; i < number; i++) {
-            [self.points addObject:[@[] mutableCopy]];
-        }
-        
-        self.minXValue = 0;
-        self.maxXValue = 0;
-        self.minYValue = 0;
-        self.maxYValue = 0;
-        
         self.colors = @[
             [UIColor colorWithHexString:@"#3366CC"],
             [UIColor colorWithHexString:@"#DC3912"],
@@ -53,69 +39,84 @@
 
 - (void)drawRect:(CGRect)rect
 {
-    self.originPoint = CGPointMake(0, CGRectGetMaxY(rect));
-    [self drawAxes];
     [self drawRules];
+    [self drawAxes];
+    [self drawLines];
 }
 
 - (void)drawAxes
 {
+    CGPoint originPoint = CGPointMake(0, CGRectGetHeight(self.frame));
     CGPoint xAxisEdgePoint = CGPointMake(CGRectGetWidth(self.frame), CGRectGetHeight(self.frame));
     CGPoint yAxisEdgePoint = CGPointMake(0, 0);
     
     UIColor *color = [UIColor blackColor];
     
-    [self drawLineFrom:self.originPoint to:xAxisEdgePoint width:2.0f color:color.CGColor];
-    [self drawLineFrom:self.originPoint to:yAxisEdgePoint width:2.0f color:color.CGColor];
+    [self drawLineFrom:originPoint to:xAxisEdgePoint width:2.0 color:color.CGColor];
+    [self drawLineFrom:originPoint to:yAxisEdgePoint width:2.0 color:color.CGColor];
 }
 
 - (void)drawRules
 {
+    CGFloat width = CGRectGetWidth(self.frame);
+    CGFloat height = CGRectGetHeight(self.frame);
+    
     UIColor *color = [UIColor colorWithHexString:@"#CCCCCC"];
+    
+    for (int y = 0; y < 4; y++) {
+        CGPoint startPoint = CGPointMake(0, height * y / 4);
+        CGPoint endPoint = CGPointMake(width, height * y / 4);
+        [self drawLineFrom:startPoint to:endPoint width:1.0 color:color.CGColor];
+    }
+    
+    for (int x = 1; x <= 4; x++) {
+        CGPoint startPoint = CGPointMake(width * x / 4, 0);
+        CGPoint endPoint = CGPointMake(width * x / 4, height);
+        [self drawLineFrom:startPoint to:endPoint width:1.0 color:color.CGColor];
+    }
+}
+
+- (void)drawLines
+{
+    NTLineChartView *parentView = (NTLineChartView *)self.superview;
+    float maxXValue = parentView.maxXValue;
+    float minXValue = parentView.minXValue;
+    float maxYValue = parentView.maxYValue;
+    float minYValue = parentView.minYValue;
     
     CGFloat width = CGRectGetWidth(self.frame);
     CGFloat height = CGRectGetHeight(self.frame);
     
-    for (int i = 0; i < 4; i++) {
-        CGPoint startPoint = CGPointMake(0, height * i / 4);
-        CGPoint endPoint = CGPointMake(width, height * i / 4);
-        [self drawLineFrom:startPoint to:endPoint width:1.0f color:color.CGColor];
-    }
-    
-    for (int i = 1; i <= 4; i++) {
-        CGPoint startPoint = CGPointMake(width * i / 4, height);
-        CGPoint endPoint = CGPointMake(width * i / 4, 0);
-        [self drawLineFrom:startPoint to:endPoint width:1.0f color:color.CGColor];
-    }
-}
-
-- (void)addPoint:(NTPoint *)point atLineIndex:(NSInteger)index
-{
-    [self.points[index] addObject:point];
-    
-    // these values are used to convert values of data into coordinates of points.
-    self.minXValue = MIN(point.xValue, self.minXValue);
-    self.maxXValue = MAX(point.xValue, self.maxXValue);
-    self.minYValue = MIN(point.yValue, self.minYValue);
-    self.maxYValue = MAX(point.yValue, self.maxYValue);
-}
-
-- (void)drawLineAtIndex:(NSInteger)index
-{
-    UIColor *color = self.colors[index % self.colors.count];
-    
-    NSMutableArray *pointsForLine = self.points[index];
-    for (NTPoint *point in pointsForLine) {
-        // convert data into coordinate
-        [point setXByWidth:CGRectGetWidth(self.frame) margin:CGRectGetMinX(self.frame) max:self.maxXValue min:self.minXValue];
-        [point setYByHeight:CGRectGetHeight(self.frame) margin:CGRectGetMinY(self.frame) max:self.maxYValue min:self.minYValue];
+    for (NSArray *pointsForLine in self.points) {
+        NSInteger lineIndex = [self.points indexOfObject:pointsForLine];
+        UIColor *color = self.colors[lineIndex % self.colors.count];
         
-        NSInteger pointIndex = [pointsForLine indexOfObject:point];
-        if (pointIndex > 0) {
-            NTPoint *startPoint = pointsForLine[pointIndex - 1];
-            [self drawLineFrom:startPoint.CGPoint to:point.CGPoint width:2.0f color:color.CGColor];
+        for (NTPoint *point in pointsForLine) {
+            [point setXByWidth:width max:maxXValue min:minXValue];
+            [point setYByHeight:height max:maxYValue min:minYValue];
+            
+            NSInteger pointIndex = [pointsForLine indexOfObject:point];
+            if (pointIndex > 0) {
+                NTPoint *startPoint = pointsForLine[pointIndex - 1];
+                [self drawLineFrom:startPoint.CGPoint to:point.CGPoint width:2.0 color:color.CGColor];
+            }
         }
     }
+}
+
+- (void)drawLineFrom:(CGPoint)startPoint to:(CGPoint)endPoint width:(CGFloat)width color:(CGColorRef)color
+{
+    CGContextRef context = UIGraphicsGetCurrentContext();
+    CGContextSaveGState(context);
+    
+    CGContextSetLineWidth(context, width);
+    CGContextSetLineCap(context, kCGLineCapSquare);
+    CGContextSetStrokeColorWithColor(context, color);
+    CGContextMoveToPoint(context, startPoint.x, startPoint.y);
+    CGContextAddLineToPoint(context, endPoint.x, endPoint.y);
+    CGContextStrokePath(context);
+    
+    CGContextRestoreGState(context);
 }
 
 @end

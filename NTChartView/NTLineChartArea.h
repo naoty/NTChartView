@@ -12,9 +12,6 @@
 
 @interface NTLineChartArea : NTLineChartView
 
-- (id)initWithFrame:(CGRect)rect numberOfLines:(NSInteger)number;
-- (void)addPoint:(NTPoint *)point atLineIndex:(NSInteger)index;
-- (void)drawLineAtIndex:(NSInteger)index;
-- (void)drawRules;
+@property (nonatomic) NSMutableArray *points;
 
 @end
