@@ -18,14 +18,19 @@
 {
     [super viewDidLoad];
     
-    NTLineChartView *lineChartView = [[NTLineChartView alloc] initWithFrame:self.view.bounds];
-    lineChartView.dataSource = self;
-    [self.view addSubview:lineChartView];
+    self.lineChartView = [[NTLineChartView alloc] initWithFrame:self.view.bounds];
+    self.lineChartView.dataSource = self;
+    [self.view addSubview:self.lineChartView];
 }
 
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
+}
+
+- (void)didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation
+{
+    [self.lineChartView refreshWithFrame:self.view.bounds];
 }
 
 #pragma mark - NTLineChartViewDataSource

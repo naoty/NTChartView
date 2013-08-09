@@ -11,4 +11,6 @@
 
 @interface ViewController : UIViewController <NTLineChartViewDataSource>
 
+@property (nonatomic) NTLineChartView *lineChartView;
+
 @end

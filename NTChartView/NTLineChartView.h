@@ -18,6 +18,8 @@
 @property (nonatomic) float minYValue;
 @property (nonatomic) float maxYValue;
 
+- (void)refreshWithFrame:(CGRect)frame;
+
 @end
 
 @protocol NTLineChartViewDataSource <NSObject>

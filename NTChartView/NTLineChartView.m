@@ -24,6 +24,7 @@ const CGFloat kPaddingRight = 20.0;
 const CGFloat kPaddingBottom = 30.0;
 const CGFloat kPaddingLeft = 50.0;
 const CGFloat kLabelHeight = 15.0;
+NSString * const kLabelName = @"NTLineChartViewLabel";
 
 - (id)initWithFrame:(CGRect)frame
 {
@@ -74,6 +75,7 @@ const CGFloat kLabelHeight = 15.0;
         float value = self.maxYValue * (4 - y) / 4 + self.minYValue;
         
         CATextLayer *labelLayer = [CATextLayer layer];
+        labelLayer.name = kLabelName;
         labelLayer.contentsScale = [[UIScreen mainScreen] scale];
         labelLayer.string = [NSString stringWithFormat:@"%.1f", value];
         labelLayer.fontSize = 13;
@@ -87,6 +89,7 @@ const CGFloat kLabelHeight = 15.0;
         float value = self.maxXValue * x / 4 + self.minXValue;
         
         CATextLayer *labelLayer = [CATextLayer layer];
+        labelLayer.name = kLabelName;
         labelLayer.contentsScale = [[UIScreen mainScreen] scale];
         labelLayer.string = [NSString stringWithFormat:@"%.1f", value];
         labelLayer.fontSize = 13;
@@ -95,6 +98,22 @@ const CGFloat kLabelHeight = 15.0;
         labelLayer.frame = CGRectMake(CGRectGetWidth(self.lineChartArea.frame) * x / 4 + kPaddingLeft - kPaddingLeft / 2, CGRectGetHeight(self.frame) - kPaddingBottom + 5, kPaddingLeft, kLabelHeight);
         [self.layer addSublayer:labelLayer];
     }
+}
+
+- (void)refreshWithFrame:(CGRect)frame
+{
+    self.frame = frame;
+    
+    // Remove lineChartArea and labels.
+    NSArray *sublayers = [NSArray arrayWithArray:self.layer.sublayers];
+    for (CALayer *sublayer in sublayers) {
+        if ([sublayer.name compare:kLabelName] == NSOrderedSame) {
+            [sublayer removeFromSuperlayer];
+        }
+    }
+    [self.lineChartArea removeFromSuperview];
+    
+    [self setNeedsDisplay];
 }
 
 @end
