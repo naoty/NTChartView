@@ -14,6 +14,8 @@
 @interface NTLineChartView ()
 
 @property (nonatomic) NTLineChartArea *lineChartArea;
+@property (nonatomic) NTLineChartXAxisDataType xAxisDataType;
+@property (nonatomic) NSDateFormatter *dateFormatter;
 
 @end
 
@@ -31,10 +33,10 @@ NSString * const kLabelName = @"NTLineChartViewLabel";
     self = [super initWithFrame:frame];
     if (self) {
         self.backgroundColor = [UIColor clearColor];
-        self.maxXValue = 0;
-        self.minXValue = 0;
-        self.maxYValue = 0;
-        self.minYValue = 0;
+        self.maxXValue = -INFINITY;
+        self.minXValue = INFINITY;
+        self.maxYValue = -INFINITY;
+        self.minYValue = INFINITY;
     }
     return self;
 }
@@ -51,9 +53,10 @@ NSString * const kLabelName = @"NTLineChartViewLabel";
     for (lineIndex = 0; lineIndex < numberOfLines; lineIndex++) {
         self.lineChartArea.points[lineIndex] = [@[] mutableCopy];
         NSArray *data = [self.dataSource lineChartView:self dataForLineAtIndex:lineIndex];
+        [self setXAxisDataTypeWithData:data];
         for (NSArray *values in data) {
-            float xValue = [values[0] floatValue];
-            float yValue = [values[1] floatValue];
+            double xValue = [self correctValue:values[0]];
+            double yValue = [self correctValue:values[1]];
             
             // these values are used to determine coordinates of points.
             self.maxXValue = MAX(xValue, self.maxXValue);
@@ -68,6 +71,24 @@ NSString * const kLabelName = @"NTLineChartViewLabel";
     
     [self addLabels];
 }
+
+- (void)refreshWithFrame:(CGRect)frame
+{
+    self.frame = frame;
+    
+    // Remove lineChartArea and labels.
+    NSArray *sublayers = [NSArray arrayWithArray:self.layer.sublayers];
+    for (CALayer *sublayer in sublayers) {
+        if ([sublayer.name compare:kLabelName] == NSOrderedSame) {
+            [sublayer removeFromSuperlayer];
+        }
+    }
+    [self.lineChartArea removeFromSuperview];
+    
+    [self setNeedsDisplay];
+}
+
+#pragma mark - Local methods
 
 - (void)addLabels
 {
@@ -86,34 +107,55 @@ NSString * const kLabelName = @"NTLineChartViewLabel";
     }
     
     for (int x = 0; x <= 4; x++) {
-        float value = self.maxXValue * x / 4 + self.minXValue;
-        
         CATextLayer *labelLayer = [CATextLayer layer];
         labelLayer.name = kLabelName;
         labelLayer.contentsScale = [[UIScreen mainScreen] scale];
-        labelLayer.string = [NSString stringWithFormat:@"%.1f", value];
         labelLayer.fontSize = 13;
         labelLayer.foregroundColor = [UIColor blackColor].CGColor;
         labelLayer.alignmentMode = kCAAlignmentCenter;
         labelLayer.frame = CGRectMake(CGRectGetWidth(self.lineChartArea.frame) * x / 4 + kPaddingLeft - kPaddingLeft / 2, CGRectGetHeight(self.frame) - kPaddingBottom + 5, kPaddingLeft, kLabelHeight);
+        
+        if (self.xAxisDataType == NTLineChartXAxisDataTypeDate) {
+            double value = (self.maxXValue - self.minXValue) * x / 4 + self.minXValue;
+            NSDate *date = [NSDate dateWithTimeIntervalSince1970:value];
+            labelLayer.string = [self.dateFormatter stringFromDate:date];
+        } else {
+            float value = self.maxXValue * x / 4 + self.minXValue;
+            labelLayer.string = [NSString stringWithFormat:@"%.1f", value];
+        }
+        
         [self.layer addSublayer:labelLayer];
     }
 }
 
-- (void)refreshWithFrame:(CGRect)frame
+- (void)setXAxisDataTypeWithData:(NSArray *)data
 {
-    self.frame = frame;
-    
-    // Remove lineChartArea and labels.
-    NSArray *sublayers = [NSArray arrayWithArray:self.layer.sublayers];
-    for (CALayer *sublayer in sublayers) {
-        if ([sublayer.name compare:kLabelName] == NSOrderedSame) {
-            [sublayer removeFromSuperlayer];
+    id xValue = data[0][0];
+    if ([xValue isKindOfClass:[NSDate class]]) {
+        self.xAxisDataType = NTLineChartXAxisDataTypeDate;
+        
+        NSDate *xValue1 = (NSDate *)xValue;
+        NSDate *xValue2 = (NSDate *)data[1][0];
+        NSTimeInterval interval = [xValue2 timeIntervalSinceDate:xValue1];
+        
+        self.dateFormatter = [[NSDateFormatter alloc] init];
+        if (interval > 1 * 60 * 60) {
+            self.dateFormatter.dateFormat = @"MM/dd";
+        } else {
+            self.dateFormatter.dateFormat = @"HH:mm";
         }
+    } else {
+        self.xAxisDataType = NTLineChartXAxisDataTypeNumber;
     }
-    [self.lineChartArea removeFromSuperview];
-    
-    [self setNeedsDisplay];
+}
+
+- (double)correctValue:(id)value
+{
+    if ([value isKindOfClass:[NSDate class]]) {
+        return [value timeIntervalSince1970];
+    } else {
+        return [value floatValue];
+    }
 }
 
 @end

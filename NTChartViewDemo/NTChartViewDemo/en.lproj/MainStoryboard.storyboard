@@ -1,26 +1,187 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="3084" systemVersion="12E55" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="2">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="3084" systemVersion="12E55" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="lnm-h6-LUZ">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="2083"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
-        <scene sceneID="5">
+        <!--Table View Controller - NTChartViewDemo-->
+        <scene sceneID="da9-ZI-4zf">
             <objects>
-                <viewController id="2" customClass="ViewController" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="3">
-                        <rect key="frame" x="0.0" y="20" width="320" height="548"/>
+                <tableViewController id="oUt-sK-ztw" sceneMemberID="viewController">
+                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="du8-SE-kLc">
+                        <rect key="frame" x="0.0" y="64" width="320" height="504"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <sections>
+                            <tableViewSection headerTitle="Line charts" id="09u-oO-pT8">
+                                <cells>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="SIT-K4-2ES">
+                                        <rect key="frame" x="0.0" y="22" width="320" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="0.0" y="0.0" width="300" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Basic" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lg3-IM-kSD">
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="21" id="BxZ-NT-uuu"/>
+                                                        <constraint firstAttribute="width" constant="260" id="wWK-v4-4jw"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="21"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                </label>
+                                            </subviews>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </view>
+                                        <constraints>
+                                            <constraint firstItem="Lg3-IM-kSD" firstAttribute="top" secondItem="SIT-K4-2ES" secondAttribute="top" constant="11" id="Hho-Rd-NoW"/>
+                                            <constraint firstItem="Lg3-IM-kSD" firstAttribute="leading" secondItem="SIT-K4-2ES" secondAttribute="leading" constant="20" type="default" id="NH5-RA-kMN"/>
+                                        </constraints>
+                                        <connections>
+                                            <segue destination="zZK-Ox-ViR" kind="push" id="liO-kf-59z"/>
+                                        </connections>
+                                    </tableViewCell>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="9ff-RB-O5w">
+                                        <rect key="frame" x="0.0" y="66" width="320" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="0.0" y="0.0" width="300" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Date" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IF7-Hh-MLD">
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="260" id="MI4-2M-2FI"/>
+                                                        <constraint firstAttribute="height" constant="21" id="p9P-Sd-0jZ"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="21"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                </label>
+                                            </subviews>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </view>
+                                        <constraints>
+                                            <constraint firstItem="IF7-Hh-MLD" firstAttribute="top" secondItem="9ff-RB-O5w" secondAttribute="top" constant="11" id="EaK-3o-SMQ"/>
+                                            <constraint firstItem="IF7-Hh-MLD" firstAttribute="leading" secondItem="9ff-RB-O5w" secondAttribute="leading" constant="20" type="default" id="l2Q-Aw-wRH"/>
+                                        </constraints>
+                                        <connections>
+                                            <segue destination="9Jp-Sn-1RC" kind="push" id="ETH-Tp-1G9"/>
+                                        </connections>
+                                    </tableViewCell>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="59w-ta-2cA">
+                                        <rect key="frame" x="0.0" y="110" width="320" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="0.0" y="0.0" width="300" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="DateTime" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PGX-5m-Vdh">
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="260" id="8yI-W1-Xfr"/>
+                                                        <constraint firstAttribute="height" constant="21" id="yq7-Cf-J9T"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="21"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                </label>
+                                            </subviews>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </view>
+                                        <constraints>
+                                            <constraint firstItem="PGX-5m-Vdh" firstAttribute="top" secondItem="59w-ta-2cA" secondAttribute="top" constant="11" id="5EV-bR-IlA"/>
+                                            <constraint firstItem="PGX-5m-Vdh" firstAttribute="leading" secondItem="59w-ta-2cA" secondAttribute="leading" constant="20" type="default" id="D0C-hr-OxL"/>
+                                        </constraints>
+                                        <connections>
+                                            <segue destination="C7i-vt-3lz" kind="push" id="NSw-6p-aqm"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
+                        </sections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="NTChartViewDemo" id="e0G-7m-y60"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="v5e-UX-lji" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="462" y="71"/>
+        </scene>
+        <!--Basic Line Chart View Controller-->
+        <scene sceneID="E6w-xH-Mdd">
+            <objects>
+                <viewController id="zZK-Ox-ViR" customClass="BasicLineChartViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="BzZ-by-bgi">
+                        <rect key="frame" x="0.0" y="64" width="320" height="504"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
+                    <navigationItem key="navigationItem" id="McG-4y-BEw"/>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="4" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="59w-L7-AFk" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="1007" y="-685"/>
+        </scene>
+        <!--Date Time Line Chart View Controller-->
+        <scene sceneID="FJp-Eb-Vh3">
+            <objects>
+                <viewController id="C7i-vt-3lz" customClass="DateTimeLineChartViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="lo8-OG-Mk8">
+                        <rect key="frame" x="0.0" y="64" width="320" height="504"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="1IM-he-mSE"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="yF8-eX-aBu" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1007" y="826"/>
+        </scene>
+        <!--Date Line Chart View Controller-->
+        <scene sceneID="Rgr-Z5-5YJ">
+            <objects>
+                <viewController id="9Jp-Sn-1RC" customClass="DateLineChartViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="f3T-bp-zez">
+                        <rect key="frame" x="0.0" y="64" width="320" height="504"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="g9P-Wt-Cu3"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="hNm-V1-8Oi" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1007" y="71"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="KrF-ST-di4">
+            <objects>
+                <navigationController definesPresentationContext="YES" id="lnm-h6-LUZ" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="pWV-bW-bKv">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="oUt-sK-ztw" kind="relationship" relationship="rootViewController" id="SYk-jk-7fV"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="eF7-Ua-s8f" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-72" y="71"/>
         </scene>
     </scenes>
     <classes>
-        <class className="ViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/ViewController.h"/>
+        <class className="BasicLineChartViewController" superclassName="LineChartViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/BasicLineChartViewController.h"/>
+        </class>
+        <class className="DateLineChartViewController" superclassName="LineChartViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/DateLineChartViewController.h"/>
+        </class>
+        <class className="DateTimeLineChartViewController" superclassName="LineChartViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/DateTimeLineChartViewController.h"/>
+        </class>
+        <class className="LineChartViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/LineChartViewController.h"/>
+        </class>
+        <class className="NSLayoutConstraint" superclassName="NSObject">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/NSLayoutConstraint.h"/>
         </class>
     </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">

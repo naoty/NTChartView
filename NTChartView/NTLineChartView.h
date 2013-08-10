@@ -10,13 +10,18 @@
 
 @protocol NTLineChartViewDataSource;
 
+typedef NS_ENUM(NSInteger, NTLineChartXAxisDataType) {
+    NTLineChartXAxisDataTypeNumber,
+    NTLineChartXAxisDataTypeDate
+};
+
 @interface NTLineChartView : NTChartView
 
 @property (nonatomic, weak) id <NTLineChartViewDataSource> dataSource;
-@property (nonatomic) float minXValue;
-@property (nonatomic) float maxXValue;
-@property (nonatomic) float minYValue;
-@property (nonatomic) float maxYValue;
+@property (nonatomic) double minXValue;
+@property (nonatomic) double maxXValue;
+@property (nonatomic) double minYValue;
+@property (nonatomic) double maxYValue;
 
 - (void)refreshWithFrame:(CGRect)frame;
 

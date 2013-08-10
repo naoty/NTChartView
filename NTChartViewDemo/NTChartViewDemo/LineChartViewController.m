@@ -1,24 +1,33 @@
 //
-//  ViewController.m
+//  LineChartViewController.m
 //  NTChartViewDemo
 //
-//  Created by naoty on 2013/07/31.
+//  Created by naoty on 2013/08/10.
 //  Copyright (c) 2013年 Naoto Kaneko. All rights reserved.
 //
 
-#import "ViewController.h"
+#import "LineChartViewController.h"
 
-@interface ViewController ()
+@interface LineChartViewController ()
+
+@property (nonatomic) NTLineChartView *lineChartView;
 
 @end
 
-@implementation ViewController
+@implementation LineChartViewController
+
+CGFloat const kStatusBarHeight = 20.0;
+CGFloat const kNavigationBarHeight = 44.0;
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     
-    self.lineChartView = [[NTLineChartView alloc] initWithFrame:self.view.bounds];
+    CGRect screenRect = [[UIScreen mainScreen] bounds];
+    CGFloat lineChartViewHeight = CGRectGetHeight(screenRect) - kStatusBarHeight - kNavigationBarHeight;
+    CGRect lineChartViewRect = CGRectMake(0, 0, CGRectGetWidth(screenRect),  lineChartViewHeight);
+    
+    self.lineChartView = [[NTLineChartView alloc] initWithFrame:lineChartViewRect];
     self.lineChartView.dataSource = self;
     [self.view addSubview:self.lineChartView];
 }
@@ -37,16 +46,12 @@
 
 - (NSInteger)numberOfLinesInLineChartView:(NTLineChartView *)lineChartView
 {
-    return 2;
+    return 1;
 }
 
 - (NSArray *)lineChartView:(NTLineChartView *)lineChartView dataForLineAtIndex:(NSInteger)index
 {
-    if (index == 0) {
-        return @[@[@0, @50], @[@1, @150], @[@2, @300], @[@3, @0], @[@4, @200], @[@5, @500], @[@6, @300]];
-    } else {
-        return @[@[@0, @200], @[@1, @50], @[@2, @100], @[@3, @400], @[@4, @50], @[@5, @300], @[@6, @750]];
-    }
+    return @[];
 }
 
 @end

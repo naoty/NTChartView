@@ -17,7 +17,10 @@
 		3D539A1517A824B800FDDAAE /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3D539A1417A824B800FDDAAE /* Default@2x.png */; };
 		3D539A1717A824B800FDDAAE /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3D539A1617A824B800FDDAAE /* Default-568h@2x.png */; };
 		3D539A1A17A824B800FDDAAE /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3D539A1817A824B800FDDAAE /* MainStoryboard.storyboard */; };
-		3D539A1D17A824B800FDDAAE /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D539A1C17A824B800FDDAAE /* ViewController.m */; };
+		3D539A1D17A824B800FDDAAE /* BasicLineChartViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D539A1C17A824B800FDDAAE /* BasicLineChartViewController.m */; };
+		3D65954117B5648E0017F25F /* DateTimeLineChartViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D65954017B5648E0017F25F /* DateTimeLineChartViewController.m */; };
+		3D65954417B686700017F25F /* LineChartViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D65954317B686700017F25F /* LineChartViewController.m */; };
+		3D65954717B6889E0017F25F /* DateLineChartViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D65954617B6889E0017F25F /* DateLineChartViewController.m */; };
 		C277D3D743904E41AAE625CD /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BC104237E37147DBAA29F23A /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -36,8 +39,14 @@
 		3D539A1417A824B800FDDAAE /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
 		3D539A1617A824B800FDDAAE /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		3D539A1917A824B800FDDAAE /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard.storyboard; sourceTree = "<group>"; };
-		3D539A1B17A824B800FDDAAE /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		3D539A1C17A824B800FDDAAE /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		3D539A1B17A824B800FDDAAE /* BasicLineChartViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BasicLineChartViewController.h; sourceTree = "<group>"; };
+		3D539A1C17A824B800FDDAAE /* BasicLineChartViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BasicLineChartViewController.m; sourceTree = "<group>"; };
+		3D65953F17B5648E0017F25F /* DateTimeLineChartViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DateTimeLineChartViewController.h; sourceTree = "<group>"; };
+		3D65954017B5648E0017F25F /* DateTimeLineChartViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DateTimeLineChartViewController.m; sourceTree = "<group>"; };
+		3D65954217B686700017F25F /* LineChartViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LineChartViewController.h; sourceTree = "<group>"; };
+		3D65954317B686700017F25F /* LineChartViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LineChartViewController.m; sourceTree = "<group>"; };
+		3D65954517B6889E0017F25F /* DateLineChartViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DateLineChartViewController.h; sourceTree = "<group>"; };
+		3D65954617B6889E0017F25F /* DateLineChartViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DateLineChartViewController.m; sourceTree = "<group>"; };
 		BC104237E37147DBAA29F23A /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		F0D282765CAC456E93708378 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
@@ -92,8 +101,14 @@
 				3D539A0F17A824B800FDDAAE /* AppDelegate.h */,
 				3D539A1017A824B800FDDAAE /* AppDelegate.m */,
 				3D539A1817A824B800FDDAAE /* MainStoryboard.storyboard */,
-				3D539A1B17A824B800FDDAAE /* ViewController.h */,
-				3D539A1C17A824B800FDDAAE /* ViewController.m */,
+				3D65954217B686700017F25F /* LineChartViewController.h */,
+				3D65954317B686700017F25F /* LineChartViewController.m */,
+				3D539A1B17A824B800FDDAAE /* BasicLineChartViewController.h */,
+				3D539A1C17A824B800FDDAAE /* BasicLineChartViewController.m */,
+				3D65953F17B5648E0017F25F /* DateTimeLineChartViewController.h */,
+				3D65954017B5648E0017F25F /* DateTimeLineChartViewController.m */,
+				3D65954517B6889E0017F25F /* DateLineChartViewController.h */,
+				3D65954617B6889E0017F25F /* DateLineChartViewController.m */,
 				3D539A0717A824B800FDDAAE /* Supporting Files */,
 			);
 			path = NTChartViewDemo;
@@ -216,7 +231,10 @@
 			files = (
 				3D539A0D17A824B800FDDAAE /* main.m in Sources */,
 				3D539A1117A824B800FDDAAE /* AppDelegate.m in Sources */,
-				3D539A1D17A824B800FDDAAE /* ViewController.m in Sources */,
+				3D539A1D17A824B800FDDAAE /* BasicLineChartViewController.m in Sources */,
+				3D65954117B5648E0017F25F /* DateTimeLineChartViewController.m in Sources */,
+				3D65954417B686700017F25F /* LineChartViewController.m in Sources */,
+				3D65954717B6889E0017F25F /* DateLineChartViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
